@@ -7,19 +7,35 @@
 //
 
 import UIKit
+//ActionDelegationを採用する
+class ViewController: UIViewController, ActionDelegation {
 
-class ViewController: UIViewController {
-
+    //アクションビュー
+    @IBOutlet weak var actionView: ActionView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        //デリゲーションを指定
+        actionView.delegation = self
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    //アクションビューをタップした時に呼ばれるデリゲートメソッド
+    //必ず実装する
+    func didTapped(view: UIView) {
+        print("didTapped View'frame is : \(view.frame)")
+        
     }
-
-
+    
+    
+    //アクションビューをムーブした時に呼ばれるデリゲートメソッド
+    //オプションなので必ずしも実装しなくてもよい
+    func didMoved(view: UIView) {
+        
+        print("didMoved View'frame is  : \(view.frame)")
+        
+    }
 }
 
